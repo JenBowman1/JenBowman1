@@ -1,0 +1,391 @@
+html {
+  background: url(5476306.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body>header {
+  color: white;
+  width: 100%;
+}
+
+body>header>nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: normal;
+  padding: 0rem 2rem;
+}
+
+.title img {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-right: 10px;
+}
+
+.title h1 {
+  margin-bottom: 0;
+  font-weight: 300;
+  position: relative;
+}
+
+.title h4 {
+  margin: 0;
+  font-weight: 300;
+}
+
+body>header>nav>menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+body>header>nav>menu>li {
+  margin-bottom: 0;
+  padding: 0.5rem 1rem;
+}
+
+button {
+  background-color: Transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  font-size: 1rem;
+  padding: .5rem;
+  transition: all .15s ease-in-out;
+  font-weight: 300;
+}
+
+
+button:hover {
+  box-shadow: 0 0 10px rgb(205, 92, 92);
+  padding: .75rem;
+  background-color: indianred;
+}
+
+button:active {
+  box-shadow: 0 0 10px rgb(205, 92, 92);
+  padding: .75rem;
+  background-color: indianred;
+  transform: translateY(2px);
+}
+
+main {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  max-width: 100rem;
+  padding: 2rem 4rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.349);
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.projmain h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  color: #542df7;
+  padding: 0;
+}
+
+.projmain h2 {
+  font-weight: 700;
+  color: #542df7;
+  padding: 0;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: indianred;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: indianred;
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.projmain h4 {
+  line-height: 2.0;
+  font-weight: 300;
+  color: #525252;
+}
+
+b{
+  color: #542df7;
+}
+
+.container {
+  animation: slideUp 1s ease forwards;
+  transition: all 1s ease;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(300px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+@media screen and (min-width:76.8rem) {
+  main>form>fieldset {
+    align-items: flex-end;
+    flex-direction: row;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  main>form>fieldset>* {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+label, input, select {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.button {
+  background-color: indianred;
+  box-shadow: 0 0 10px rgb(205, 92, 92);
+  padding: .75rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 25px;
+  font-weight: 300;
+  border: none;
+  cursor:pointer;
+  outline:none;
+  transition: all .15s ease-in-out;
+  font-weight: 300;
+  color: white;
+}
+
+.button:hover {
+  box-shadow: 0 0 10px rgb(205, 92, 92);
+  background-color: rgb(205, 92, 92);
+  transform: scale(1.2);
+}
+
+.button:active {
+  box-shadow: 0 0 10px rgb(205, 92, 92);
+  background-color: rgb(205, 92, 92);
+  transform: translateY(4px);
+}
+
+.hide {
+  display : none;
+}
+
+/*** Result Styles **/
+
+.main {
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+}
+
+.left {
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: none;
+  width: 50%;
+  padding-right: 1rem;
+}
+
+.right {
+  text-align: left;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: none;
+  width: 50%;
+  padding-left: 1rem;
+}
+
+.house {
+  width: 75px;
+  float: left;
+  margin-bottom: 25px;
+  margin-right: 25px;
+}
+
+.left h2 {
+  font-weight: 300;
+}
+
+.right h2 {
+  margin-bottom: 0;
+  font-weight: 300;
+  position: relative;
+}
+
+.right h4 {
+  color: #542df7;
+  margin: 0;
+  font-weight: 300;
+}
+
+.cont {
+  margin-top: 50px;
+}
+
+/*** Table Styles **/
+
+.table-fill {
+  background: white;
+  border-radius: 3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin-right: auto;
+  margin-left:auto;
+  margin-bottom: 50px;
+  padding: 5px;
+  width: 100%;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+
+th {
+  color: white;
+  background: #542df7;
+  border-bottom: 4px solid white;
+  border-right: 1px solid white;
+  font-size: 23px;
+  font-weight: 100;
+  padding: 24px;
+  text-align: left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align: middle;
+}
+
+th:first-child {
+  border-top-left-radius: 3px;
+}
+
+th:last-child {
+  border-top-right-radius: 3px;
+  border-right: none;
+}
+
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
+  color: #666B85;
+  font-size: 16px;
+  font-weight: normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+tr:hover td {
+  background: #4E5066;
+  color: #FFFFFF;
+  border-top: 1px solid #22262e;
+}
+
+tr:first-child {
+  border-top: none;
+}
+
+tr:last-child {
+  border-bottom: none;
+}
+
+tr:nth-child(odd) td {
+  background: #EBEBEB;
+}
+
+tr:nth-child(odd):hover td {
+  background: #4E5066;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: 3px;
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: 3px;
+}
+
+td {
+  background: #FFFFFF;
+  padding: 20px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+
+.workflow{
+  margin-top: 25px;
+  width:80%;
+  filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.1));
+}

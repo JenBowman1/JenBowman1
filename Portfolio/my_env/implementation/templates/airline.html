@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'airlinestyle.css') }}">
+  <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');</style>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');</style>
+  <title>HOMEPAGE</title>
+</head>
+<body>
+   <header>
+    <nav>
+      <div class = "title">
+        <img src="{{ url_for('static', filename= 'data.png') }}" alt="data icon">
+        <h1>Jenna Bowman</h1>
+        <h4>Data Science</h4>
+      </div>
+      <menu>
+        <li><button><a href="/">Home</a></button></li>
+        <li>
+        <div class="dropdown">
+            <button class="dropbtn">Projects</button>
+            <div class="dropdown-content">
+              <a href="/house">House Price Predictor</a>
+              <a href="/loan">Loan Default Risk</a>
+              <a href="/recommend">Recommendation System</a>
+              <a href="/stock">Stock Price Predictor</a>
+              <a href="/airline">Airline Passenger Predictor</a>
+            </div>
+          </div>
+        </li>
+        <li><button><a href="/about">About</a></button></li>
+        <li><button><a href="/contact">Contact</a></button></li>
+      </menu>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="projmain">
+      <h1>Airline Passenger Predictor</h1>
+        <h4>
+          Phasellus vel gravida justo. Phasellus nec quam sit amet dolor blandit
+          aliquam. Maecenas purus justo, ornare sit amet nisi nec, hendrerit tempus
+          odio. Pellentesque non ullamcorper nisi, ac dictum tellus. In vel purus sed
+          justo scelerisque lobortis. Aenean id enim rutrum, fermentum augue vel, iaculis
+          neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in metus
+          sit amet tellus maximus egestas tincidunt quis quam. Quisque aliquam ornare enim
+          varius tristique. Fusce quis congue ante. Sed pulvinar, est et consectetur
+          fermentum, lectus dolor elementum dolor, nec venenatis ex nulla nec ante.
+          Vestibulum magna massa, tempor vitae pharetra vitae, lacinia sed neque.
+          Vestibulum a est pretium ipsum sodales dignissim. Aliquam tellus tortor,
+          ullamcorper et nisl sit amet, blandit vulputate elit. Nulla vulputate odio nunc,
+          eu tincidunt nisi malesuada quis. Sed bibendum magna scelerisque tristique vestibulum.
+          Fusce a nisi libero. Quisque imperdiet pellentesque dui, sed vehicula ligula lobortis
+          ut. Nullam dapibus scelerisque velit eget faucibus. Cras elementum hendrerit mauris,
+          vitae tincidunt metus aliquet quis. Sed nec egestas ante. Ut et mauris elementum,
+          suscipit turpis at, malesuada erat. Ut tincidunt tellus quis tristique consectetur.
+        </h4>
+    </div>
+  </main>
+  <script src="airlinescript.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'housestyle.css') }}">
+  <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');</style>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');</style>
+  <title>HOMEPAGE</title>
+</head>
+<body>
+   <header>
+    <nav>
+      <div class = "title">
+        <img src="{{ url_for('static', filename= 'data.png') }}" alt="data icon">
+        <h1>Jenna Bowman</h1>
+        <h4>Data Science</h4>
+      </div>
+      <menu>
+        <li><button><a href="/">Home</a></button></li>
+        <li>
+        <div class="dropdown">
+            <button class="dropbtn">Projects</button>
+            <div class="dropdown-content">
+              <a href="/house">House Price Predictor</a>
+              <a href="/loan">Loan Default Risk</a>
+              <a href="/recommend">Recommendation System</a>
+              <a href="/stock">Stock Price Predictor</a>
+              <a href="/airline">Airline Passenger Predictor</a>
+            </div>
+          </div>
+        </li>
+        <li><button><a href="/about">About</a></button></li>
+        <li><button><a href="/contact">Contact</a></button></li>
+      </menu>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="projmain">
+      <h1>Advanced House Pricing Predictor</h1>
+      <h4>
+        Finding an accurate estimate for the price of your home can be a challenge. Many different variables impact
+        the final price of the home, and are often difficult to quantify. House Pricing Algorithims help people find a fitting
+        price for their home and help those who plan to buy a home in the future.
+        This house pricing application was built using a gradient boosting model, using a dataset with <b>79
+        explanatory variables</b>, each describing a unique feature of residential homes in Ames, Iowa. It successfully
+        predicts the price of a home in this location with <b>87.5%</b> R^2 Score (coefficient of determination) and an RMSE (root mean square error) of <b>$14,576</b>.
+        This algorithim was built for a competition on kaggle.com, in which it placed within the <b>top 15%</b> of submissions.
+      </h4>
+      <div class="main">
+        <section class="left">
+          <div id="prediction" class="prediction">
+            <h2>Predicted Home Price using XGBoost Model: <b>${{prediction}}</b></h2>
+            <button class="button"><a href="/house">Make a New Prediction</a></button>
+            <h2>Workflow</h2>
+            <img src="{{ url_for('static', filename= 'flow.png') }}" alt="Workflow" class="workflow">
+          </div>
+        </section>
+        <section class="right">
+          <img src="{{ url_for('static', filename= 'house_pricing_icon.png') }}" alt="house" class="house">
+          <h2>Sample Home:</h2>
+          <h4>A Look into the DataSet</h4>
+          <div class="cont">
+            <table class="table-fill">
+              <thead>
+                <tr>
+                  <th class="text-left">Feature</th>
+                  <th class="text-left">Value</th>
+                </tr>
+              </thead>
+              <tbody class="table-hover">
+                <tr>
+                  <td class="text-left">Home Size</td>
+                  <td class="text-left">2,530 spqft</td>
+                </tr>
+                <tr>
+                  <td class="text-left">Year Built</td>
+                  <td class="text-left">1998</td>
+                </tr>
+                <tr>
+                  <td class="text-left">Bedrooms</td>
+                  <td class="text-left">3</td>
+                </tr>
+                <tr>
+                  <td class="text-left">Full Bath</td>
+                  <td class="text-left">3</td>
+                </tr>
+                <tr>
+                  <td class="text-left">Half Bath</td>
+                  <td class="text-left">1</td>
+                </tr>
+                <tr>
+                  <td class="text-left">Home Type</td>
+                  <td class="text-left">Single Family</td>
+                </tr>
+                <tr>
+                  <td class="text-left">Overall Quality</td>
+                  <td class="text-left">Above Average</td>
+                </tr>
+              </tbody>
+            </table>
+            <h2>Predicted Home Price using XGBoost Model: <b>$198,291</b></h2>
+            <h2>Actual Home Price From DataSet: <b>$195,500</b></h2>
+            <h2>Error For Sample Home: <b>$2,791</b></h2>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script></script>
+</body>
+</html>

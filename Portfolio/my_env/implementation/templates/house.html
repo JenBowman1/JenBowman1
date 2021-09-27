@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'housestyle.css') }}">
+  <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');</style>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');</style>
+  <title>HOMEPAGE</title>
+</head>
+<body>
+   <header>
+    <nav>
+      <div class = "title">
+        <img src="{{ url_for('static', filename= 'data.png') }}" alt="data icon">
+        <h1>Jenna Bowman</h1>
+        <h4>Data Science</h4>
+      </div>
+      <menu>
+        <li><button><a href="/">Home</a></button></li>
+        <li>
+        <div class="dropdown">
+            <button class="dropbtn">Projects</button>
+            <div class="dropdown-content">
+              <a href="/house">House Price Predictor</a>
+              <a href="/loan">Loan Default Risk</a>
+              <a href="/recommend">Recommendation System</a>
+              <a href="/stock">Stock Price Predictor</a>
+              <a href="/airline">Airline Passenger Predictor</a>
+            </div>
+          </div>
+        </li>
+        <li><button><a href="/about">About</a></button></li>
+        <li><button><a href="/contact">Contact</a></button></li>
+      </menu>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="projmain">
+      <h1>Advanced House Pricing Predictor</h1>
+        <h4>
+          Finding an accurate estimate for the price of your home can be a challenge. Many different variables impact
+          the final price of the home, and are often difficult to quantify. House Pricing Algorithims help people find a fitting
+          price for their home and help those who plan to buy a home in the future.
+          This house pricing application was built using a gradient boosting model, using a dataset with <b>79
+          explanatory variables</b>, each describing a unique feature of residential homes in Ames, Iowa. It successfully
+          predicts the price of a home in this location with an <b>87.5%</b> R^2 Score (coefficient of determination) and an RMSE (root mean square error) of <b>$14,576</b>.
+          This algorithim was built for a competition on kaggle.com, in which it placed within the <b>top 15%</b> of submissions.
+        </h4>
+        <div class="main" id="main">
+        <section class="left">
+          <h2>Test the Model:</h2>
+          <form action = "/houseprediction" method = "POST" id="form">
+            <div class = "one" id="one">
+              <label for="AllSF">Home Size (sqft): <b>*</b></label><br>
+              <input type="text" id="AllSF" name="AllSF" required><br>
+              <label for="YearBuilt">Year Built: <b>*</b></label><br>
+              <input type="text" id="YearBuilt" name="YearBuilt" required><br>
+              <label for="YrSold">Year Sold: <b>*</b></label><br>
+              <input type="text" id="YrSold" name="YrSold" required><br>
+              <label for="BedroomAbvGr">Bedrooms: <b>*</b></label><br>
+              <input type="text" id="BedroomAbvGr" name="BedroomAbvGr" required><br>
+              <label for="FullBath">Full Bathrooms: <b>*</b></label><br>
+              <input type="text" id="FullBath" name="FullBath" required><br>
+              <label for="HalfBath">Half Bathrooms: <b>*</b></label><br>
+              <input type="text" id="HalfBath" name="HalfBath" required><br>
+              <label for="YearRemodAdd">Year Remodelled (Input Year Built if not Remodelled): <b>*</b></label><br>
+              <input type="text" id="YearRemodAdd" name="YearRemodAdd" required><br>
+              <input type="button" value="Next" class="button" onclick="page2()">
+            </div>
+            <div class="two" style="display:none;" id="two">
+              <label for="BldgType">Home Type:</label><br>
+              <select id="BldgType" name="BldgType">
+                <option value="1Fam">Single Family Detached</option>
+                <option value="2FmCon">Two Family Conversion</option>
+                <option value="Duplx">Duplex</option>
+                <option value="TwnhsE">Townhouse End Unit</option>
+                <option value="TwnhsI">Townhouse Inside Unit</option>
+              </select><br>
+              <label for="HouseStyle">Home Style:</label><br>
+              <select id="HouseStyle" name="HouseStyle">
+                <option value="1Story">1 Story</option>
+                <option value="1.5Fin">1.5 Story, Finished Upper Level</option>
+                <option value="1.5Unf">1.5 Story, Unfinished Upper Level</option>
+                <option value="2Story">2 Story</option>
+                <option value="2.5Fin">2.5 Story, Finished Upper Level</option>
+                <option value="2.5Unf">2.5 Story, Unfinished Upper Level</option>
+                <option value="SFoyer">Split Foyer</option>
+                <option value="SLvl">Split Level</option>
+              </select><br>
+              <label for="OverallQual">Overall Home Quality:</label><br>
+              <select id="OverallQual" name="OverallQual">
+                <option value="10">Very Excellent</option>
+                <option value="9">Excellent</option>
+                <option value="8">Very Good</option>
+                <option value="7">Good</option>
+                <option value="6">Above Average</option>
+                <option value="5">Average</option>
+                <option value="4">Below Average</option>
+                <option value="3">Fair</option>
+                <option value="2">Poor</option>
+                <option value="1">Very Poor</option>
+              </select><br>
+              <label for="BsmtFinType1">Basement:</label><br>
+              <select id="BsmtFinType1" name="BsmtFinType1">
+                <option value="GLQ">Finished</option>
+                <option value="Unf">Unfinished</option>
+                <option value="NA">No Basement</option>
+              </select><br>
+              <label for="LotShape">Lot Shape:</label><br>
+              <select id="LotShape" name="LotShape">
+                <option value="Reg">Regular</option>
+                <option value="IR1">Slightly Irregular</option>
+                <option value="IR2">Moderately Irregular</option>
+                <option value="IR3">Irregular</option>
+              </select><br>
+              <label for="RoofStyle">Roof Style:</label><br>
+              <select id="RoofStyle" name="RoofStyle">
+                <option value="Flat">Flat</option>
+                <option value="Gable">Gable</option>
+                <option value="Gambrel">Gambrel (Barn Roof)</option>
+                <option value="Hip">Hip</option>
+                <option value="Mansard">Mansard</option>
+                <option value="Shed">Shed</option>
+              </select><br>
+              <input type="button" value="Previous" class="button" onclick="page1()">
+              <input type="button" value="Next" class="button" onclick="page3()">
+            </div>
+            <div class="three" style="display:none;" id="three">
+              <label for="Exterior1st">Home Exterior:</label><br>
+              <select id="Exterior1st" name="Exterior1st">
+                <option value="AsbShng">Asbestos Shingles</option>
+                <option value="AsphShn">Asphalt Shingles</option>
+                <option value="BrkComm">Brick Common</option>
+                <option value="BrkFace">Brick Face</option>
+                <option value="CBlock">Cinder Block</option>
+                <option value="CemntBd">Cement Board</option>
+                <option value="HdBoard">Hard Board</option>
+                <option value="ImStucc">Imitation Stucco</option>
+                <option value="MetalSd">Metal Siding</option>
+                <option value="Other">Other</option>
+                <option value="Plywood">Plywood</option>
+                <option value="PreCast">PreCast</option>
+                <option value="Stone">Stone</option>
+                <option value="Stucco">Stucco</option>
+                <option value="VinylSd">Vinyl Siding</option>
+                <option value="Wd Sdng">Wood Siding</option>
+                <option value="WdShing">Wood Shingles</option>
+              </select><br>
+              <label for="Heating">Heating:</label><br>
+              <select id="Heating" name="Heating">
+                <option value="Floor">Floor Furnace</option>
+                <option value="GasA">Gas Forced Warm Air Furnace</option>
+                <option value="GasW">Gas Hot Water or Steam Air</option>
+                <option value="Grav">Gravity Furnace</option>
+                <option value="OthW">Hot Water or Steam Heat Other than Gas</option>
+                <option value="Wall">Wall Furnace</option>
+              </select><br>
+              <label for="CentralAir">Central Air Conditioning:</label><br>
+              <select id="CentralAir" name="CentralAir">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+              </select><br>
+              <label for="Electrical">Electrical System:</label><br>
+              <select id="Electrical" name="Electrical">
+                <option value="SBrkr">Standard Circuit Breaker</option>
+                <option value="FuseA">Fuse Box over 60 AMP & All Wiring</option>
+                <option value="FuseF">Fuse Box over 60 AMP & Most Wiring</option>
+                <option value="FuseP">Fuse Box over 60 AMP & Knob/Tube Wiring</option>
+                <option value="Mix">Mixed</option>
+              </select><br>
+              <label for="KitchenQual">Kitchen Quality:</label><br>
+              <select id="KitchenQual" name="KitchenQual">
+                <option value="Ex">Excellent</option>
+                <option value="Gd">Good</option>
+                <option value="TA">Typical/Average</option>
+                <option value="Fa">Fair</option>
+                <option value="Po">Poor</option>
+              </select><br>
+              <label for="Fireplaces">Fireplaces:</label><br>
+              <select id="Fireplaces" name="Fireplaces">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4+</option>
+              </select><br>
+              <label for="GarageType">GarageType:</label><br>
+              <select id="GarageType" name="GarageType">
+                <option value="Attchd">Attached to Home</option>
+                <option value="Basment">Basement Garage</option>
+                <option value="BuiltIn">Built-In</option>
+                <option value="CarPort">Car Port</option>
+                <option value="Detchd">Detached From Home</option>
+                <option value="NA">No Garage</option>
+              </select><br>
+              <input type="button" value="Previous" class="button" onclick="page2()">
+              <input type="button" value="Next" class="button" onclick="page4()">
+            </div>
+            <div class="four" style="display:none;" id="four">
+              <label for="PavedDrive">Paved Driveway:</label><br>
+              <select id="PavedDrive" name="PavedDrive">
+                <option value="Y">Paved</option>
+                <option value="P">Partial Pavement</option>
+                <option value="N">Dirt/Gravel</option>
+              </select><br>
+              <label for="PorchSF">Porch:</label><br>
+              <select id="PorchSF" name="PorchSF">
+                <option value="164.0">Yes</option>
+                <option value="0">No</option>
+              </select><br>
+              <label for="BackyardSF">Backyard:</label><br>
+              <select id="BackyardSF" name="BackyardSF">
+                <option value="8308.0">Yes</option>
+                <option value="0">No</option>
+              </select><br>
+              <label for="hasshed">Backyard Shed:</label><br>
+              <select id="hasshed" name="hasshed">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select><br>
+              <label for="haspool">Pool:</label><br>
+              <select id="haspool" name="haspool">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select><br>
+              <label for="Fence">Fence:</label><br>
+              <select id="Fence" name="Fence">
+                <option value="GdPrv">Good Privacy Fence</option>
+                <option value="MnPrv">Minimum Privacy Fence</option>
+                <option value="GdWood">Good Wood Fence</option>
+                <option value="MnWw">Minimum Wood/Wire Fence</option>
+                <option value="NA">No Fence</option>
+              </select><br>
+              <input type="button" value="Previous" class="button" onclick="page3()">
+              <input type="submit" value="Predict" class="button">
+            </div>
+          </form>
+        </section>
+        <section class="right">
+          <h2>Workflow</h2>
+            <img src="{{ url_for('static', filename= 'flow.png') }}" alt="Workflow" class="workflow">
+        </section>
+      </div>
+    </div>
+  </main>
+  <script>
+    function page1() {
+      document.getElementById("one").style.display = "inline"
+      document.getElementById("two").style.display = "none";
+      document.getElementById("three").style.display = "none";
+      document.getElementById("four").style.display = "none";
+    }
+    function page2() {
+      document.getElementById("one").style.display = "none"
+      document.getElementById("two").style.display = "inline";
+      document.getElementById("three").style.display = "none";
+      document.getElementById("four").style.display = "none";
+    }
+    function page3() {
+      document.getElementById("one").style.display = "none"
+      document.getElementById("two").style.display = "none";
+      document.getElementById("three").style.display = "inline";
+      document.getElementById("four").style.display = "none";
+    }
+    function page4() {
+      document.getElementById("one").style.display = "none"
+      document.getElementById("two").style.display = "none";
+      document.getElementById("three").style.display = "none";
+      document.getElementById("four").style.display = "inline";
+    }
+  </script>
+</body>
+</html>
