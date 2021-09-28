@@ -111,8 +111,7 @@ def make_prediction():
         data['has2ndfloor'] = data['2ndFlrSF'].apply(lambda x: 1 if x > 0 else 0)
         data['hasgarage'] = data['GarageArea'].apply(lambda x: 1 if x > 0 else 0)
         data['hasbsmt'] = data['TotalBsmtSF'].apply(lambda x: 1 if x > 0 else 0)
-        data['hasfireplace'] = data['Fireplaces'].apply(
-            lambda x: 1 if x > 0 else 0)
+        data['hasfireplace'] = data['Fireplaces'].apply(lambda x: 1 if x > 0 else 0)
         return data
     X = feat_engin(X)
 
@@ -122,8 +121,20 @@ def make_prediction():
         data = pd.DataFrame(np.expm1(model.predict(data)))
         return data
     X = reindex_predict(X, cols, model)
+    c = pd.read_csv('train.csv')
+
+    def find_nearest(array, value):
+        array = np.asarray(array)
+        idx = (np.abs(array - value)).argmin()
+        return array[idx]
+    npq = find_nearest(list(c['SalePrice']), int(X[0]))
+    sample = pd.DataFrame(c[c['SalePrice'] == npq])
+    sample['AllSF'] = sample['TotalBsmtSF'] + sample['1stFlrSF'] + sample['2ndFlrSF']
+    sample['qual'] = sample['OverallQual'].apply(lambda x: 'Very Excellent' if x == 10 else 'Excellent' if x == 9 else 'Very Good' if x == 8 else 'Good' if x == 7 else 'Above Average' if x == 6 else 'Average' if x == 5 else 'Below Average' if x == 4 else 'Fair' if x == 3 else 'Poor' if x == 2 else 'Very Poor')
+    sample['type'] = sample['BldgType'].apply(lambda x: 'Single Family Detached' if x =='1Fam' else 'Two Family Conversion' if x =='2FmCon' else 'Duplex' if x == 'Duplx' else 'Townhouse End Unit' if x == 'TwnhsE' else 'Townhouse Inside Unit')
     X = "{:,}".format(int(X[0]))
-    return render_template('houseprediction.html', prediction=X)
+    npq = "{:,}".format(npq)
+    return render_template('houseprediction.html', prediction=X, AllSF="{:,}".format(int(sample['AllSF'])), YearBuilt=int(sample['YearBuilt']), BedroomAbvGr=int(sample['BedroomAbvGr']), fullbath=int(sample['FullBath']), halfbath=int(sample['HalfBath']), OverallQual=sample['qual'].values[0], BldgType=sample['type'].values[0], samp=npq)
 
 @app.route("/airline")
 def airline():

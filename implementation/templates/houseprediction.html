@@ -59,8 +59,8 @@
         </section>
         <section class="right">
           <img src="{{ url_for('static', filename= 'house_pricing_icon.png') }}" alt="house" class="house">
-          <h2>Sample Home:</h2>
-          <h4>A Look into the DataSet</h4>
+          <h2>A Similar Home in the DataSet:</h2>
+          <h4>Examining the Data</h4>
           <div class="cont">
             <table class="table-fill">
               <thead>
@@ -72,37 +72,35 @@
               <tbody class="table-hover">
                 <tr>
                   <td class="text-left">Home Size</td>
-                  <td class="text-left">2,530 spqft</td>
+                  <td class="text-left">{{AllSF}} sqft</td>
                 </tr>
                 <tr>
                   <td class="text-left">Year Built</td>
-                  <td class="text-left">1998</td>
+                  <td class="text-left">{{YearBuilt}}</td>
                 </tr>
                 <tr>
                   <td class="text-left">Bedrooms</td>
-                  <td class="text-left">3</td>
+                  <td class="text-left">{{BedroomAbvGr}}</td>
                 </tr>
                 <tr>
                   <td class="text-left">Full Bath</td>
-                  <td class="text-left">3</td>
+                  <td class="text-left">{{fullbath}}</td>
                 </tr>
                 <tr>
                   <td class="text-left">Half Bath</td>
-                  <td class="text-left">1</td>
+                  <td class="text-left">{{halfbath}}</td>
                 </tr>
                 <tr>
                   <td class="text-left">Home Type</td>
-                  <td class="text-left">Single Family</td>
+                  <td class="text-left">{{BldgType}}</td>
                 </tr>
                 <tr>
                   <td class="text-left">Overall Quality</td>
-                  <td class="text-left">Above Average</td>
+                  <td class="text-left">{{OverallQual}}</td>
                 </tr>
               </tbody>
             </table>
-            <h2>Predicted Home Price using XGBoost Model: <b>$198,291</b></h2>
-            <h2>Actual Home Price From DataSet: <b>$195,500</b></h2>
-            <h2>Error For Sample Home: <b>$2,791</b></h2>
+            <h2>Similar Home Value: <b>${{samp}}</b></h2>
           </div>
         </section>
       </div>
